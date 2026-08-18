@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="nuveicecream — temukan rasa es krim favoritmu.">
+  <title>nuveicecream — Find Your Flavor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar">
+  <a href="#home" class="brand">nuve<span>icecream</span></a>
+  <nav id="nav">
+    <a href="#home">Home</a>
+    <a href="#flavors">Flavors</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="cart-btn" id="cartBtn" aria-label="Keranjang">🛒 <b id="cartCount">0</b></button>
+    <a href="#order" class="order-btn">Order now <span>↗</span></a>
+  </div>
+  <button class="menu-btn" id="menuBtn">☰</button>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-copy">
+    <div class="pill"><span>✦</span> Freshly scooped every day</div>
+    <h1>Find your<br><em>happy</em> flavor.</h1>
+    <p>Es krim creamy dengan rasa yang dibuat untuk bikin hari biasa terasa lebih spesial.</p>
+    <div class="hero-buttons">
+      <a class="primary-btn" href="#flavors">Explore flavors <span>→</span></a>
+      <a class="secondary-link" href="#about">Why nuveicecream? ↗</a>
+    </div>
+    <div class="stats">
+      <div><strong>12+</strong><small>Signature<br>flavors</small></div>
+      <div><strong>100%</strong><small>Fresh<br>ingredients</small></div>
+      <div><strong>4.9</strong><small>Happy<br>customers</small></div>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <div class="photo-orb"></div>
+    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=1100&q=85" alt="Es krim cone" fetchpriority="high">
+    <div class="floating-note"><span>Today's pick</span><b>Berry Bliss</b><small>Rp 20K</small></div>
+    <div class="mini-star">✦</div>
+  </div>
+</section>
+
+<section class="flavors section" id="flavors">
+  <div class="section-title">
+    <div>
+      <span class="kicker">OUR FLAVORS</span>
+      <h2>Pick your<br><em>mood.</em></h2>
+    </div>
+    <p>Mulai dari rasa klasik sampai favorit kekinian. Semua siap jadi scoop favoritmu.</p>
+  </div>
+  <div class="filter-row" id="filters">
+    <button class="filter active" data-filter="all">All flavors</button>
+    <button class="filter" data-filter="classic">Classic</button>
+    <button class="filter" data-filter="fruity">Fruity</button>
+    <button class="filter" data-filter="fresh">Fresh</button>
+  </div>
+  <div class="flavor-grid" id="flavorGrid">
+    <article class="flavor-card" data-category="classic">
+      <div class="flavor-image"><img src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=900&q=85" alt="Vanilla Cloud" loading="lazy"><span>01</span><button class="quick-add" data-name="Vanilla Cloud">+</button></div>
+      <div class="flavor-info"><div><small>CLASSIC</small><b>Rp 18K</b></div><h3>Vanilla Cloud</h3><p>Soft vanilla · Milky cream</p></div>
+    </article>
+    <article class="flavor-card" data-category="fruity">
+      <div class="flavor-image"><img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=900&q=85" alt="Berry Bliss" loading="lazy"><span>02</span><button class="quick-add" data-name="Berry Bliss">+</button></div>
+      <div class="flavor-info"><div><small>BEST SELLER</small><b>Rp 20K</b></div><h3>Berry Bliss</h3><p>Sweet berry · Creamy finish</p></div>
+    </article>
+    <article class="flavor-card" data-category="fresh">
+      <div class="flavor-image"><img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=900&q=85" alt="Matcha Mist" loading="lazy"><span>03</span><button class="quick-add" data-name="Matcha Mist">+</button></div>
+      <div class="flavor-info"><div><small>FRESH</small><b>Rp 20K</b></div><h3>Matcha Mist</h3><p>Matcha · Milky smooth</p></div>
+    </article>
+    <article class="flavor-card" data-category="fruity">
+      <div class="flavor-image"><img src="https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?auto=format&fit=crop&w=900&q=85" alt="Strawberry Dream" loading="lazy"><span>04</span><button class="quick-add" data-name="Strawberry Dream">+</button></div>
+      <div class="flavor-info"><div><small>FRUITY</small><b>Rp 20K</b></div><h3>Strawberry Dream</h3><p>Fresh strawberry · Sweet cream</p></div>
+    </article>
+    <article class="flavor-card" data-category="classic">
+      <div class="flavor-image"><img src="https://images.unsplash.com/photo-1557142046-c704a3adf364?auto=format&fit=crop&w=900&q=85" alt="Chocolate Noir" loading="lazy"><span>05</span><button class="quick-add" data-name="Chocolate Noir">+</button></div>
+      <div class="flavor-info"><div><small>CLASSIC</small><b>Rp 19K</b></div><h3>Chocolate Noir</h3><p>Dark cocoa · Rich & smooth</p></div>
+    </article>
+    <article class="flavor-card" data-category="fresh">
+      <div class="flavor-image"><img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=900&q=85" alt="Minty Blue" loading="lazy"><span>06</span><button class="quick-add" data-name="Minty Blue">+</button></div>
+      <div class="flavor-info"><div><small>FRESH</small><b>Rp 21K</b></div><h3>Minty Blue</h3><p>Cool mint · Blue cream</p></div>
+    </article>
+  </div>
+</section>
+
+<section class="banner">
+  <div><span class="kicker light">NUVÉ SPECIAL</span><h2>2 scoops,<br><em>1 happy moment.</em></h2></div>
+  <div class="banner-right"><p>Mix two flavors favoritmu dan dapatkan harga spesial setiap weekend.</p><a href="#order" class="light-btn">Get the deal →</a></div>
+</section>
+
+<section class="about section" id="about">
+  <div class="about-photo"><img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=1100&q=85" alt="Ice cream cone" loading="lazy"><span>made for<br>good days.</span></div>
+  <div class="about-copy">
+    <span class="kicker">THE NUVÉ WAY</span>
+    <h2>Simple scoop.<br><em>Big feeling.</em></h2>
+    <p>nuveicecream dibuat dari ide sederhana: es krim harus terasa enak, terlihat cantik, dan mudah dipesan. Kami memilih bahan yang fresh dan rasa yang familiar dengan sedikit twist.</p>
+    <div class="checks"><span>✓ Fresh ingredients</span><span>✓ Small-batch crafted</span><span>✓ Made with care</span></div>
+    <a href="#order" class="primary-btn">Order your scoop →</a>
+  </div>
+</section>
+
+<section class="reviews section" id="reviews">
+  <div class="center-title"><span class="kicker">SWEET WORDS</span><h2>They <em>love</em> it.</h2></div>
+  <div class="review-grid">
+    <article><div>★★★★★</div><p>“Berry Bliss-nya creamy banget. Packaging-nya juga gemas dan clean!”</p><b>— Aulia</b></article>
+    <article><div>★★★★★</div><p>“Matcha Mist jadi rasa favorit aku. Nggak terlalu manis, pas banget.”</p><b>— Raka</b></article>
+    <article><div>★★★★★</div><p>“Order gampang, es krim datang tetap cantik. Definitely ordering again.”</p><b>— Naya</b></article>
+  </div>
+</section>
+
+<section class="order section" id="order">
+  <div><span class="kicker">READY TO SCOOP?</span><h2>Your next<br><em>favorite is here.</em></h2></div>
+  <div class="order-box"><p>Pesan langsung lewat WhatsApp dan tulis rasa yang kamu mau.</p><a class="primary-btn" href="https://wa.me/6281210719902?text=Halo%20kak%20rindu%20aku%20cek%20di%20website%20kamu%20keren%2C%20mau%20dong%20pesan%20menu%20........." target="_blank" rel="noopener">Order via WhatsApp ↗</a><small>Mon–Sun · 10.00–21.00</small></div>
+</section>
+</main>
+
+<footer><a class="brand" href="#home">nuve<span>icecream</span></a><p>© 2026 nuveicecream · made for sweet moments.</p><a href="#home">Back to top ↑</a></footer>
+
+<div class="cart-drawer" id="cartDrawer">
+  <div class="drawer-head"><h3>Your scoops</h3><button id="closeCart">×</button></div>
+  <div id="cartItems" class="cart-items"><p class="empty">Belum ada scoop. Pilih rasa favoritmu 🍦</p></div>
+  <div class="cart-bottom"><div><span>Total</span><b id="cartTotal">Rp 0</b></div><a id="checkout" class="primary-btn" target="_blank" rel="noopener">Checkout WhatsApp →</a></div>
+</div>
+<div class="drawer-backdrop" id="backdrop"></div>
+<a class="wa-float" href="https://wa.me/6281210719902?text=Halo%20kak%20rindu%20aku%20cek%20di%20website%20kamu%20keren%2C%20mau%20dong%20pesan%20menu%20........." target="_blank" rel="noopener" aria-label="WhatsApp">☏ <span>Order via WhatsApp</span></a>
+
+<script src="script.js"></script>
+</body>
+</html>
