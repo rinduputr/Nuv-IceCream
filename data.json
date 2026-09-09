@@ -1,0 +1,210 @@
+{
+  "categories": [
+    { "id": "kopi", "name": "Kopi", "icon": "☕" },
+    { "id": "nonkopi", "name": "Non-Kopi", "icon": "🍵" },
+    { "id": "signature", "name": "Signature", "icon": "✨" },
+    { "id": "pastry", "name": "Pastry", "icon": "🥐" },
+    { "id": "makanan", "name": "Makanan", "icon": "🥗" }
+  ],
+  "menu": [
+    {
+      "id": 1,
+      "category": "kopi",
+      "name": "Espresso",
+      "desc": "Shot pekat dari single origin pilihan, crema tebal.",
+      "price": "22.000",
+      "tag": "Hot"
+    },
+    {
+      "id": 2,
+      "category": "kopi",
+      "name": "Americano",
+      "desc": "Espresso diencerkan air panas. Rasa bersih dan ringan.",
+      "price": "25.000",
+      "tag": "Hot / Ice"
+    },
+    {
+      "id": 3,
+      "category": "kopi",
+      "name": "Latte",
+      "desc": "Espresso + susu steamed. Lembut, creamy, latte art.",
+      "price": "32.000",
+      "tag": "Hot / Ice"
+    },
+    {
+      "id": 4,
+      "category": "kopi",
+      "name": "Cappuccino",
+      "desc": "Espresso, susu, dan foam seimbang. Klasik Italia.",
+      "price": "32.000",
+      "tag": "Hot"
+    },
+    {
+      "id": 5,
+      "category": "kopi",
+      "name": "Flat White",
+      "desc": "Mikrofom silky, rasio kopi lebih kuat dari latte.",
+      "price": "34.000",
+      "tag": "Hot"
+    },
+    {
+      "id": 6,
+      "category": "kopi",
+      "name": "Manual Brew V60",
+      "desc": "Pour-over single origin. Catatan rasa sesuai batch hari ini.",
+      "price": "38.000",
+      "tag": "Hot"
+    },
+    {
+      "id": 7,
+      "category": "nonkopi",
+      "name": "Matcha Latte",
+      "desc": "Matcha Jepang grade ceremonial dengan susu fresh.",
+      "price": "36.000",
+      "tag": "Hot / Ice"
+    },
+    {
+      "id": 8,
+      "category": "nonkopi",
+      "name": "Chocolate",
+      "desc": "Cokelat Belgia kental, tidak terlalu manis.",
+      "price": "34.000",
+      "tag": "Hot / Ice"
+    },
+    {
+      "id": 9,
+      "category": "nonkopi",
+      "name": "Fresh Orange",
+      "desc": "Perasan jeruk segar tanpa pemanis tambahan.",
+      "price": "28.000",
+      "tag": "Ice"
+    },
+    {
+      "id": 10,
+      "category": "nonkopi",
+      "name": "Lemon Tea",
+      "desc": "Teh hitam, lemon, madu. Segar sepanjang hari.",
+      "price": "26.000",
+      "tag": "Hot / Ice"
+    },
+    {
+      "id": 11,
+      "category": "signature",
+      "name": "Nuvé Cloud",
+      "desc": "Signature house: espresso, susu oat, vanila, foam ringan.",
+      "price": "42.000",
+      "tag": "Best Seller"
+    },
+    {
+      "id": 12,
+      "category": "signature",
+      "name": "Blueberry Espresso Tonic",
+      "desc": "Espresso, tonic, blueberry. Segar dan beraroma.",
+      "price": "40.000",
+      "tag": "Ice"
+    },
+    {
+      "id": 13,
+      "category": "signature",
+      "name": "Sea Salt Caramel Latte",
+      "desc": "Latte dengan caramel house-made dan pinch sea salt.",
+      "price": "39.000",
+      "tag": "Hot / Ice"
+    },
+    {
+      "id": 14,
+      "category": "pastry",
+      "name": "Croissant Butter",
+      "desc": "Lapisan renyah, mentega Prancis. Dipanggang pagi.",
+      "price": "28.000",
+      "tag": "Fresh Bake"
+    },
+    {
+      "id": 15,
+      "category": "pastry",
+      "name": "Cinnamon Roll",
+      "desc": "Gulungan kayu manis dengan glaze vanila.",
+      "price": "30.000",
+      "tag": "Fresh Bake"
+    },
+    {
+      "id": 16,
+      "category": "pastry",
+      "name": "Banana Bread",
+      "desc": "Roti pisang moist, walnut, tanpa pengawet.",
+      "price": "24.000",
+      "tag": "Slice"
+    },
+    {
+      "id": 17,
+      "category": "makanan",
+      "name": "Avocado Toast",
+      "desc": "Sourdough, alpukat, telur, chili flakes, lemon.",
+      "price": "48.000",
+      "tag": "All Day"
+    },
+    {
+      "id": 18,
+      "category": "makanan",
+      "name": "Club Sandwich",
+      "desc": "Ayam panggang, selada, tomat, mayo house.",
+      "price": "52.000",
+      "tag": "All Day"
+    },
+    {
+      "id": 19,
+      "category": "makanan",
+      "name": "Granola Bowl",
+      "desc": "Yogurt, granola house, madu, buah musiman.",
+      "price": "42.000",
+      "tag": "Pagi"
+    }
+  ],
+  "videos": [
+    {
+      "id": "wfAiFpdw1co",
+      "title": "Suasana & Kultur Cafe",
+      "channel": "Featured",
+      "thumb": "https://img.youtube.com/vi/wfAiFpdw1co/hqdefault.jpg"
+    },
+    {
+      "id": "kKAIjp3IpCo",
+      "title": "Barista & Latte Art",
+      "channel": "Artisti Coffee Roasters",
+      "thumb": "https://img.youtube.com/vi/kKAIjp3IpCo/hqdefault.jpg"
+    },
+    {
+      "id": "RKAva1OK8i4",
+      "title": "Workflow Barista Profesional",
+      "channel": "Artisti Coffee Roasters",
+      "thumb": "https://img.youtube.com/vi/RKAva1OK8i4/hqdefault.jpg"
+    },
+    {
+      "id": "RNhCriS6410",
+      "title": "POV Barista 45 Menit",
+      "channel": "IssackxCoffee",
+      "thumb": "https://img.youtube.com/vi/RNhCriS6410/hqdefault.jpg"
+    },
+    {
+      "id": "PR3eXbLzoCM",
+      "title": "Dasar Pelatihan Barista",
+      "channel": "Michigan Dining",
+      "thumb": "https://img.youtube.com/vi/PR3eXbLzoCM/hqdefault.jpg"
+    },
+    {
+      "id": "n84mflIAtr4",
+      "title": "Sehari di Balik Bar",
+      "channel": "Dero_De_Barista",
+      "thumb": "https://img.youtube.com/vi/n84mflIAtr4/hqdefault.jpg"
+    }
+  ],
+  "gallery": [
+    { "src": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80", "alt": "Latte art" },
+    { "src": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80", "alt": "Cangkir kopi" },
+    { "src": "https://images.unsplash.com/photo-1442512595331-e89e73840613?w=600&q=80", "alt": "Interior cafe" },
+    { "src": "https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&q=80", "alt": "Mesin espresso" },
+    { "src": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80", "alt": "Tempat duduk cafe" },
+    { "src": "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80", "alt": "Suasana cafe" },
+    { "src": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80", "alt": "Pour over" }
+  ]
+}
