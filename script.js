@@ -1,155 +1,36 @@
-const menuBtn=document.getElementById("menuBtn"),nav=document.getElementById("nav");
-menuBtn.addEventListener("click",()=>nav.classList.toggle("open"));
-nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
-
-const filters=document.querySelectorAll(".filter");
-const cards=document.querySelectorAll(".flavor-card");
-filters.forEach(btn=>btn.addEventListener("click",()=>{
-  filters.forEach(x=>x.classList.remove("active")); btn.classList.add("active");
-  const filter=btn.dataset.filter;
-  cards.forEach(card=>card.classList.toggle("hidden",filter!=="all"&&card.dataset.category!==filter));
-}));
-
-let cart=[];
-const cartBtn=document.getElementById("cartBtn"),drawer=document.getElementById("cartDrawer"),backdrop=document.getElementById("backdrop");
-const cartItems=document.getElementById("cartItems"),cartCount=document.getElementById("cartCount"),cartTotal=document.getElementById("cartTotal"),checkout=document.getElementById("checkout");
-function openCart(){drawer.classList.add("open");backdrop.classList.add("open")}
-function closeCart(){drawer.classList.remove("open");backdrop.classList.remove("open")}
-cartBtn.addEventListener("click",openCart); backdrop.addEventListener("click",closeCart); document.getElementById("closeCart").addEventListener("click",closeCart);
-
-document.querySelectorAll(".quick-add").forEach(btn=>btn.addEventListener("click",()=>{
-  const name=btn.dataset.name; cart.push(name); renderCart(); openCart();
-}));
-function renderCart(){
-  cartCount.textContent=cart.length;
-  if(!cart.length){
-    cartItems.innerHTML='<p class="empty">Belum ada scoop. Pilih rasa favoritmu 🍦</p>';
-  }else{
-    const counts={}; cart.forEach(x=>counts[x]=(counts[x]||0)+1);
-    cartItems.innerHTML=Object.entries(counts).map(([name,count])=>`<div class="cart-item"><span>${name} × ${count}</span><b>Rp ${count*20}K</b></div>`).join("");
-  }
-  cartTotal.textContent=`Rp ${cart.length*20}K`;
-  const detail=cart.length?cart.join(", "):"menu favorit";
-  checkout.href=`https://wa.me/6281210719902?text=${encodeURIComponent("Halo kak rindu aku cek di website kamu keren, mau dong pesan menu "+detail)}`;
-}
-renderCart();
-
-/* ================================
-   AUTO SCROLL — Nuvé Ice Cream
-   Aktif setelah 2 detik tanpa aktivitas user.
-   Aktivitas user akan menghentikan auto-scroll
-   dan timer akan dimulai ulang.
-================================ */
-(() => {
-  const IDLE_DELAY = 2000;
-  const SCROLL_STEP = 0.55;
-  const TOP_RESET_DURATION = 450;
-  const BOTTOM_THRESHOLD = 4;
-
-  let idleTimer = null;
-  let autoScrolling = false;
-  let resettingToTop = false;
-  let animationId = null;
-
-  const stopAutoScroll = () => {
-    autoScrolling = false;
-    resettingToTop = false;
-    if (animationId) {
-      cancelAnimationFrame(animationId);
-      animationId = null;
-    }
-  };
-
-  const startAutoScroll = () => {
-    if (autoScrolling || resettingToTop) return;
-    autoScrolling = true;
-    animationId = requestAnimationFrame(scrollDown);
-  };
-
-  const scrollDown = () => {
-    if (!autoScrolling || resettingToTop) return;
-
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    const currentScroll = window.scrollY;
-
-    if (maxScroll <= 0) {
-      autoScrolling = false;
-      return;
-    }
-
-    if (currentScroll >= maxScroll - BOTTOM_THRESHOLD) {
-      autoScrolling = false;
-      resetToTop();
-      return;
-    }
-
-    window.scrollBy(0, SCROLL_STEP);
-    animationId = requestAnimationFrame(scrollDown);
-  };
-
-  const resetToTop = () => {
-    if (resettingToTop) return;
-    resettingToTop = true;
-
-    const start = window.scrollY;
-    const startTime = performance.now();
-
-    const animateTop = (now) => {
-      const progress = Math.min((now - startTime) / TOP_RESET_DURATION, 1);
-      // Ease-out: cepat di awal lalu melambat saat mendekati atas.
-      const eased = 1 - Math.pow(1 - progress, 3);
-      window.scrollTo(0, start * (1 - eased));
-
-      if (progress < 1) {
-        animationId = requestAnimationFrame(animateTop);
-      } else {
-        window.scrollTo(0, 0);
-        resettingToTop = false;
-        autoScrolling = false;
-        scheduleAutoScroll();
-      }
-    };
-
-    animationId = requestAnimationFrame(animateTop);
-  };
-
-  const scheduleAutoScroll = () => {
-    clearTimeout(idleTimer);
-    idleTimer = setTimeout(() => {
-      if (!document.hidden) startAutoScroll();
-    }, IDLE_DELAY);
-  };
-
-  const registerActivity = () => {
-    stopAutoScroll();
-    scheduleAutoScroll();
-  };
-
-  // Aktivitas yang dianggap sebagai interaksi user.
-  [
-    'wheel',
-    'touchstart',
-    'touchmove',
-    'pointerdown',
-    'keydown',
-    'mousemove'
-  ].forEach(eventName => {
-    window.addEventListener(eventName, registerActivity, { passive: true });
-  });
-
-  // Klik juga dihitung sebagai aktivitas, tetapi tetap memberi waktu
-  // agar tombol/link dapat menjalankan aksinya terlebih dahulu.
-  window.addEventListener('click', registerActivity, { passive: true });
-
-  // Jika tab ditinggalkan, hentikan auto-scroll. Saat kembali, timer mulai lagi.
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      stopAutoScroll();
-      clearTimeout(idleTimer);
-    } else {
-      scheduleAutoScroll();
-    }
-  });
-
-  scheduleAutoScroll();
-})();
+const menuToggle=document.querySelector('.menu-toggle');
+const navLinks=document.querySelector('.nav-links');
+const toast=document.querySelector('.toast');
+const API_URL=window.NUVE_CONFIG?.API_URL||'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE';
+let cart=[];let adminToken='';let cachedProducts=[];let cachedOrders=[];
+function notify(message){if(!toast)return;toast.textContent=message;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2800)}
+function money(n){return new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(Number(n)||0)}
+function openModal(id){document.getElementById(id)?.classList.add('open');document.getElementById(id)?.setAttribute('aria-hidden','false')}
+function closeModal(id){document.getElementById(id)?.classList.remove('open');document.getElementById(id)?.setAttribute('aria-hidden','true')}
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(b.dataset.close)));
+document.querySelectorAll('.modal-backdrop').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id)}));
+menuToggle?.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuToggle.setAttribute('aria-expanded',open)});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+function api(action,data={}){if(!API_URL||API_URL.includes('PASTE_APPS_SCRIPT'))return Promise.reject(new Error('URL Apps Script belum diatur. Ikuti README di dalam ZIP.'));return fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action,...data})}).then(r=>r.json()).then(r=>{if(!r.ok)throw new Error(r.error||'Permintaan gagal');return r.data})}
+function getProductPrice(name){const p=cachedProducts.find(x=>x.name===name);if(p)return Number(p.price)||0;const card=[...document.querySelectorAll('.product-card')].find(c=>c.querySelector('h3')?.textContent.trim()===name);const price=card?.querySelector('.price')?.textContent||'0';return Number(price.replace(/[^0-9]/g,''))* (price.toLowerCase().includes('k')?1000:1)}
+document.querySelectorAll('.order-btn').forEach(btn=>btn.addEventListener('click',()=>{const name=btn.dataset.product;const found=cart.find(x=>x.name===name);if(found)found.qty++;else cart.push({name,price:getProductPrice(name),qty:1});notify(`${name} ditambahkan ke keranjang 🍦`);btn.textContent='Ditambahkan ✓';setTimeout(()=>btn.textContent='Tambah +',1000)}));
+function renderCheckout(){const box=document.getElementById('checkoutSummary');if(!cart.length){box.textContent='Keranjang masih kosong. Pilih menu terlebih dahulu.';return}box.textContent=cart.map(x=>`${x.name} × ${x.qty} — ${money(x.price*x.qty)}`).join('\n')+`\n\nTotal: ${money(cart.reduce((s,x)=>s+x.price*x.qty,0))}`}
+document.querySelectorAll('a[href="#menu"]').forEach(a=>{if(a.classList.contains('nav-cta')||a.classList.contains('btn-light'))a.addEventListener('click',()=>{if(cart.length){} })});
+// Checkout is available from the main order CTA and product actions.
+document.querySelectorAll('.nav-cta,.btn-light').forEach(a=>a.addEventListener('click',e=>{if(cart.length){e.preventDefault();renderCheckout();openModal('checkoutModal')}else notify('Pilih menu es krim dulu, lalu checkout ya 🍦')}));
+const checkoutForm=document.getElementById('checkoutForm');checkoutForm?.addEventListener('submit',async e=>{e.preventDefault();if(!cart.length){notify('Keranjang masih kosong');return}const fd=new FormData(checkoutForm);const payload={customerName:String(fd.get('customerName')||'').trim(),customerWhatsApp:String(fd.get('customerWhatsApp')||'').trim(),notes:String(fd.get('notes')||'').trim(),items:cart.map(x=>({name:x.name,qty:x.qty,price:x.price})),total:cart.reduce((s,x)=>s+x.price*x.qty,0)};if(payload.customerName.length<2||payload.customerWhatsApp.replace(/\D/g,'').length<8){notify('Periksa nama dan nomor WhatsApp ya');return}const submit=checkoutForm.querySelector('[type=submit]');submit.disabled=true;submit.textContent='Mengirim…';try{const result=await api('createOrder',{order:payload});cart=[];checkoutForm.reset();closeModal('checkoutModal');notify(`Pesanan berhasil dikirim! ID: ${result.orderId||'tersimpan'}`)}catch(err){notify(`Pesanan belum terkirim: ${err.message}`)}finally{submit.disabled=false;submit.innerHTML='Kirim Pesanan <span>→</span>'}});
+// Admin login and dashboard
+document.getElementById('openAdminLogin')?.addEventListener('click',()=>{navLinks.classList.remove('open');openModal('adminLoginModal')});
+document.getElementById('adminLoginForm')?.addEventListener('submit',async e=>{e.preventDefault();const form=e.currentTarget;const password=new FormData(form).get('password');const button=form.querySelector('[type=submit]');button.disabled=true;try{const result=await api('adminLogin',{password});adminToken=result.token;form.reset();closeModal('adminLoginModal');openModal('adminPanelModal');await refreshAdmin();notify('Login admin berhasil')}catch(err){notify(`Login gagal: ${err.message}`)}finally{button.disabled=false}});
+document.getElementById('adminLogout')?.addEventListener('click',async()=>{try{await api('adminLogout',{token:adminToken})}catch(_){}adminToken='';closeModal('adminPanelModal');notify('Kamu sudah keluar dari panel admin')});
+document.getElementById('refreshAdmin')?.addEventListener('click',refreshAdmin);
+document.getElementById('orderSearch')?.addEventListener('input',renderOrders);
+document.getElementById('orderStatusFilter')?.addEventListener('change',renderOrders);
+async function refreshAdmin(){if(!adminToken)return;const body=document.getElementById('ordersTableBody');body.innerHTML='<tr><td colspan="6">Memuat data…</td></tr>';try{const [orders,products]=await Promise.all([api('listOrders',{token:adminToken}),api('listProducts',{token:adminToken})]);cachedOrders=orders;cachedProducts=products;renderOrders();renderStats();renderProductsAdmin()}catch(err){body.innerHTML=`<tr><td colspan="6">${escapeHtml(err.message)}</td></tr>`;notify(err.message)}}
+function renderStats(){const counts={'Total pesanan':cachedOrders.length,'Menunggu':0,'Diproses':0,'Selesai':0};cachedOrders.forEach(o=>{if(o.status==='Menunggu')counts['Menunggu']++;if(['Diproses','Dihubungi'].includes(o.status))counts['Diproses']++;if(o.status==='Selesai')counts['Selesai']++});document.getElementById('adminStats').innerHTML=Object.entries(counts).map(([k,v])=>`<div><small>${escapeHtml(k)}</small><strong>${v}</strong></div>`).join('')}
+function renderOrders(){const q=(document.getElementById('orderSearch')?.value||'').toLowerCase();const status=document.getElementById('orderStatusFilter')?.value||'';const rows=cachedOrders.filter(o=>(!status||o.status===status)&&[o.orderId,o.customerName,o.customerWhatsApp].some(v=>String(v||'').toLowerCase().includes(q)));const body=document.getElementById('ordersTableBody');if(!rows.length){body.innerHTML='<tr><td colspan="6">Belum ada pesanan yang cocok.</td></tr>';return}body.innerHTML=rows.map(o=>{const items=Array.isArray(o.items)?o.items:[];const summary=items.map(i=>`${escapeHtml(i.name)} × ${Number(i.qty)||1}`).join('<br>');const wa=String(o.customerWhatsApp||'').replace(/\D/g,'');return `<tr><td><strong>${escapeHtml(o.orderId||'—')}</strong><small>${escapeHtml(o.createdAt||'')}</small></td><td><strong>${escapeHtml(o.customerName||'—')}</strong><small>${escapeHtml(o.customerWhatsApp||'')}</small>${wa?`<a target="_blank" rel="noopener" href="https://wa.me/${wa}" class="mini-action">WhatsApp ↗</a>`:''}</td><td>${summary||escapeHtml(o.itemsText||'—')}<small>${escapeHtml(o.notes||'')}</small></td><td><strong>${money(o.total)}</strong></td><td><select data-status-id="${escapeAttr(o.orderId)}">${['Menunggu','Dihubungi','Diproses','Selesai','Dibatalkan'].map(s=>`<option ${o.status===s?'selected':''}>${s}</option>`).join('')}</select></td><td><button class="mini-action" data-save-status="${escapeAttr(o.orderId)}">Simpan</button><button class="mini-action danger" data-delete-order="${escapeAttr(o.orderId)}">Hapus</button></td></tr>`}).join('');body.querySelectorAll('[data-save-status]').forEach(b=>b.addEventListener('click',async()=>{const id=b.dataset.saveStatus;const status=body.querySelector(`[data-status-id="${CSS.escape(id)}"]`).value;b.disabled=true;try{await api('updateOrder',{token:adminToken,orderId:id,patch:{status}});notify('Status pesanan diperbarui');await refreshAdmin()}catch(err){notify(err.message)}finally{b.disabled=false}}));body.querySelectorAll('[data-delete-order]').forEach(b=>b.addEventListener('click',async()=>{if(!confirm(`Hapus pesanan ${b.dataset.deleteOrder}? Tindakan ini tidak bisa dibatalkan.`))return;try{await api('deleteOrder',{token:adminToken,orderId:b.dataset.deleteOrder});notify('Pesanan dihapus');await refreshAdmin()}catch(err){notify(err.message)}}))}
+function renderProductsAdmin(){const el=document.getElementById('productsAdminList');el.innerHTML=cachedProducts.map(p=>`<div class="admin-product-row"><div><strong>${escapeHtml(p.name)}</strong><small>${money(p.price)} · ${escapeHtml(p.category||'Tanpa kategori')} · ${p.active===false?'Nonaktif':'Aktif'}</small></div><div class="admin-product-actions"><button class="mini-action" data-edit-product="${escapeAttr(p.id)}">Edit</button><button class="mini-action danger" data-delete-product="${escapeAttr(p.id)}">Hapus</button></div></div>`).join('')||'<small>Belum ada produk di database.</small>';el.querySelectorAll('[data-edit-product]').forEach(b=>b.addEventListener('click',()=>{const p=cachedProducts.find(x=>String(x.id)===b.dataset.editProduct);if(!p)return;const f=document.getElementById('productForm');for(const k of ['id','name','price','category','description','image'])f.elements[k].value=p[k]??'';f.elements.active.checked=p.active!==false;f.scrollIntoView({behavior:'smooth',block:'center'})}));el.querySelectorAll('[data-delete-product]').forEach(b=>b.addEventListener('click',async()=>{if(!confirm('Hapus produk ini dari database?'))return;try{await api('deleteProduct',{token:adminToken,id:b.dataset.deleteProduct});notify('Produk dihapus');await refreshAdmin()}catch(err){notify(err.message)}}))}
+document.getElementById('productForm')?.addEventListener('submit',async e=>{e.preventDefault();const f=e.currentTarget;const d=new FormData(f);const product={id:String(d.get('id')||''),name:String(d.get('name')||'').trim(),price:Number(d.get('price')),category:String(d.get('category')||'').trim(),description:String(d.get('description')||'').trim(),image:String(d.get('image')||'').trim(),active:f.elements.active.checked};try{await api(product.id?'updateProduct':'createProduct',{token:adminToken,product});f.reset();f.elements.active.checked=true;notify('Produk tersimpan');await refreshAdmin()}catch(err){notify(err.message)}});
+document.getElementById('resetProductForm')?.addEventListener('click',()=>{const f=document.getElementById('productForm');f.reset();f.elements.active.checked=true});
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function escapeAttr(s){return escapeHtml(s).replace(/`/g,'&#96;')}
+const revealItems=document.querySelectorAll('.product-card,.about-copy,.about-image,.cta-section');const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});revealItems.forEach(item=>{item.style.opacity='0';item.style.transform='translateY(18px)';item.style.transition='opacity .6s ease, transform .6s ease';observer.observe(item)});const style=document.createElement('style');style.textContent='.visible{opacity:1!important;transform:translateY(0)!important}';document.head.appendChild(style);
