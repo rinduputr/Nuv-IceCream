@@ -1,0 +1,16 @@
+Nuv-IceCream-working-images/
+├── index.html
+├── style.min.css
+├── script.js
+├── robots.txt
+├── sitemap.xml
+├── images/          ← INI FOLDER-NYA
+│   ├── hero.jpg
+│   ├── flavor1.jpg
+│   ├── flavor2.jpg
+│   ├── flavor3.jpg
+│   ├── flavor4.jpg
+│   ├── flavor5.jpg
+│   ├── flavor6.jpg
+│   └── flavor7.jpg
+└── (file lainnya)
