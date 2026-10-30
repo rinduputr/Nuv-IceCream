@@ -1,0 +1,16 @@
+<!-- Ganti isi <div class="order-box"> lama di section #order dengan blok ini. -->
+<div class="order-box">
+  <p>Isi data singkat di bawah ini. Pesanan akan disimpan ke database Nuvé Ice Cream.</p>
+  <form id="orderForm" class="order-form">
+    <label for="customerName">Nama lengkap</label>
+    <input id="customerName" name="customerName" type="text" maxlength="80" placeholder="Nama kamu" required>
+    <label for="customerWhatsApp">Nomor WhatsApp</label>
+    <input id="customerWhatsApp" name="customerWhatsApp" type="tel" maxlength="20" placeholder="Contoh: 081234567890" required>
+    <label for="orderNotes">Catatan (opsional)</label>
+    <textarea id="orderNotes" name="notes" rows="3" maxlength="300" placeholder="Alamat atau catatan pesanan"></textarea>
+    <p id="orderSummary" class="order-summary">Pilih rasa melalui tombol + pada menu terlebih dahulu.</p>
+    <button class="primary-btn order-submit" type="submit" id="submitOrder">Kirim pesanan ke Nuvé →</button>
+    <p id="orderMessage" class="order-message" role="status" aria-live="polite"></p>
+  </form>
+  <small>Mon–Sun · 10.00–21.00</small>
+</div>

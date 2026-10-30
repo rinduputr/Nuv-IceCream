@@ -1,0 +1,33 @@
+REVISI CHECKOUT DATABASE NUVÉ ICE CREAM
+
+PENTING:
+ZIP ini adalah paket patch checkout, bukan salinan lengkap website. File desain utama tidak ditimpa.
+
+1. Cadangkan repository GitHub sebelum mengubah file.
+2. Upload/replace config.js dengan config.js dari ZIP ini.
+3. Buka index.html:
+   - Di dalam <head>, pastikan ada pemanggilan config.js SEBELUM script.js:
+     <script src="config.js"></script>
+     <script src="script.js"></script>
+   - Cari section id="order". Ganti isi <div class="order-box"> lama dengan isi checkout-section.html.
+4. Buka style.css, lalu tambahkan isi checkout-style.css di bagian paling bawah.
+5. Buka script.js:
+   - Cari fungsi renderCart() dan pemanggilan renderCart().
+   - Tempel isi checkout-integration.js setelah bagian tersebut.
+   - Pastikan script.js tetap dimuat setelah config.js dan markup formulir tersedia.
+6. Commit perubahan ke branch main, lalu tunggu GitHub Pages selesai memperbarui website.
+7. Uji dengan satu pesanan percobaan. Periksa tab Orders di Google Sheets.
+
+KONTRAK BACKEND YANG DIPAKAI:
+POST JSON:
+{"action":"createOrder","order":{"customerName":"Nama","customerWhatsApp":"08...","notes":"","items":[{"name":"Berry Bliss","qty":1,"price":20000}]}}
+
+Backend Code.gs yang diperiksa menerima field tersebut dan mengembalikan data.orderId jika berhasil.
+
+KEAMANAN:
+- Jangan menaruh ADMIN_PASSWORD di config.js, HTML, JavaScript, atau GitHub.
+- Jangan mengirim password admin lewat chat.
+- URL Apps Script bukan password, tetapi jangan membagikan informasi rahasia lainnya.
+
+CATATAN KOMPATIBILITAS:
+Browser terkadang membatasi fetch lintas situs ke Google Apps Script karena mekanisme redirect/CORS. Jika website menampilkan pesan gagal terhubung walaupun URL Apps Script bisa dibuka langsung, kirim screenshot pesan error dan console browser (tanpa data pribadi). Jangan mengubah password atau menghapus data spreadsheet.

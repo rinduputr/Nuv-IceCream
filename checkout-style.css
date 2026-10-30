@@ -1,0 +1,18 @@
+/* Tambahkan ke bagian paling bawah style.css */
+.order-form { display:grid; gap:9px; }
+.order-form label { font-size:.7rem; font-weight:700; color:#3d4652; margin-top:5px; }
+.order-form input, .order-form textarea {
+  width:100%; border:1px solid #e1e6ed; border-radius:12px;
+  padding:12px 14px; font:inherit; font-size:.78rem;
+  color:#111827; background:#fbfcfe; outline:none;
+}
+.order-form input:focus, .order-form textarea:focus {
+  border-color:#1557d6; box-shadow:0 0 0 3px rgba(21,87,214,.09);
+}
+.order-form textarea { resize:vertical; }
+.order-summary { font-size:.72rem!important; background:#f2f6fc; padding:12px; border-radius:12px; color:#344054!important; margin:8px 0!important; }
+.order-submit { width:100%; justify-content:center; }
+.order-submit:disabled { opacity:.65; cursor:wait; transform:none; }
+.order-message { font-size:.72rem!important; margin:4px 0 0!important; overflow-wrap:anywhere; }
+.order-message.success { color:#16834a!important; }
+.order-message.error { color:#c0392b!important; }
