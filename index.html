@@ -145,11 +145,22 @@
 <div class="cart-drawer" id="cartDrawer">
   <div class="drawer-head"><h3>Your scoops</h3><button id="closeCart">×</button></div>
   <div id="cartItems" class="cart-items"><p class="empty">Belum ada scoop. Pilih rasa favoritmu 🍦</p></div>
-  <div class="cart-bottom"><div><span>Total</span><b id="cartTotal">Rp 0</b></div><a id="checkout" class="primary-btn" target="_blank" rel="noopener">Checkout WhatsApp →</a></div>
+  <form id="orderForm" class="drawer-order-form" hidden>
+    <label for="customerName">Nama pelanggan</label>
+    <input id="customerName" name="customerName" type="text" maxlength="80" placeholder="Nama kamu" required>
+    <label for="customerWhatsApp">Nomor WhatsApp</label>
+    <input id="customerWhatsApp" name="customerWhatsApp" type="tel" maxlength="20" placeholder="Contoh: 081234567890" required>
+    <label for="orderNotes">Catatan (opsional)</label>
+    <textarea id="orderNotes" name="notes" rows="2" maxlength="300" placeholder="Alamat atau catatan pesanan"></textarea>
+    <p id="orderMessage" class="order-message" role="status" aria-live="polite"></p>
+    <button class="primary-btn order-submit" type="submit" id="submitOrder">Kirim pesanan →</button>
+  </form>
+  <div class="cart-bottom"><div><span>Total</span><b id="cartTotal">Rp 0</b></div><button id="checkout" class="primary-btn" type="button">Lanjut checkout →</button></div>
 </div>
 <div class="drawer-backdrop" id="backdrop"></div>
 <a class="wa-float" href="https://wa.me/6281210719902?text=Halo%20kak%20rindu%20aku%20cek%20di%20website%20kamu%20keren%2C%20mau%20dong%20pesan%20menu%20........." target="_blank" rel="noopener" aria-label="WhatsApp">☏ <span>Order via WhatsApp</span></a>
 
+<script src="config.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

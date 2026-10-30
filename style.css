@@ -23,3 +23,16 @@ footer{padding:28px 8vw;border-top:1px solid var(--line);display:flex;justify-co
 .wa-float{position:fixed;right:22px;bottom:22px;z-index:100;display:flex;align-items:center;gap:8px;background:#25d366;color:#fff;border-radius:999px;padding:12px 17px;font-size:.72rem;font-weight:700;box-shadow:0 12px 30px rgba(37,211,102,.3);transition:.25s}.wa-float:hover{transform:translateY(-4px)}
 @media(max-width:850px){nav{position:absolute;top:78px;left:0;right:0;background:#fff;padding:22px 6vw;display:none;flex-direction:column;margin:0;gap:18px;border-bottom:1px solid var(--line)}nav.open{display:flex}.menu-btn{display:block;margin-left:8px}.nav-actions .order-btn{display:none}.hero{grid-template-columns:1fr;padding-top:115px}.hero-photo{height:470px}.hero-photo img{width:310px;height:430px}.photo-orb{width:350px;height:350px}.flavor-grid,.review-grid{grid-template-columns:repeat(2,1fr)}.about,.order{grid-template-columns:1fr}.about-photo{height:430px}.banner{gap:35px}.section{padding:90px 6vw}}
 @media(max-width:560px){.navbar{padding:0 5vw}.hero{padding-left:6vw;padding-right:6vw}h1{font-size:3.8rem}.hero-buttons{flex-wrap:wrap}.stats{gap:17px}.hero-photo{transform:scale(.9);margin:-20px -7%}.section-title,.banner{display:block}.section-title>p,.banner-right{margin-top:22px}.flavor-grid,.review-grid{grid-template-columns:1fr}.flavor-image{height:290px}.banner{padding:75px 6vw}.about-photo span{right:10px}.order-box{margin-top:25px}footer{flex-wrap:wrap;gap:12px}.wa-float{right:15px;bottom:15px;width:52px;height:52px;padding:0;justify-content:center}.wa-float span{display:none}}
+
+/* Checkout form di dalam keranjang */
+.drawer-order-form{border-top:1px solid var(--line);padding:16px 0;display:flex;flex-direction:column;gap:8px;max-height:48vh;overflow:auto}
+.drawer-order-form[hidden]{display:none}
+.drawer-order-form label{font-size:.72rem;font-weight:700;color:#343b49;margin-top:4px}
+.drawer-order-form input,.drawer-order-form textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 12px;font:inherit;font-size:.78rem;color:#151b2a;background:#fff;outline:none}
+.drawer-order-form input:focus,.drawer-order-form textarea:focus{border-color:var(--blue)}
+.drawer-order-form .primary-btn{width:100%;justify-content:center;cursor:pointer}
+.drawer-order-form button:disabled{opacity:.6;cursor:wait}
+.order-message{font-size:.72rem;line-height:1.5;margin:4px 0}
+.order-message.success{color:#16834a}
+.order-message.error{color:#c0392b}
+.cart-bottom .primary-btn{border:0;cursor:pointer}
