@@ -1,0 +1,14 @@
+PEMULIHAN KANDIDAT — NUVÉ ICE CREAM
+
+Isi utama:
+- Berkas website dari cadangan Nuv-IceCream-og-image-revisi.zip (21 Oktober 2026).
+- Termasuk index.html, style.css, styles.css, script.js, app.js, config.js, Code.gs, data.json, aset favicon, og-image.png, dan CNAME.
+
+PENTING:
+- Ini adalah kandidat pemulihan untuk diperiksa/diuji secara lokal, bukan pengganti otomatis repository live.
+- Jangan unggah/replace seluruh repository sebelum membandingkan dengan versi live dan menguji pesanan.
+- Folder admin-panel-reference berisi rancangan admin dari arsip terpisah bernama MeloIce; tidak digabungkan ke website Nuvé karena struktur dan konfigurasi API-nya berbeda.
+- Code.gs pada cadangan utama memiliki endpoint backend/admin. Jangan mengubah Script Properties atau spreadsheet yang sudah berjalan.
+- config.js sengaja tidak diisi URL rahasia; periksa konfigurasi Apps Script milikmu sendiri.
+
+Langkah aman berikutnya: uji website kandidat, lalu integrasikan UI admin yang cocok dengan struktur Nuvé dan uji login/pesanan sebelum deploy.

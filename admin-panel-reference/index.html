@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MeloIce - Es krim lembut, fresh, dan bikin mood lebih baik.">
+  <title>MeloIce — Scoop Happiness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a href="#home" class="logo"><span class="logo-dot"></span>Melo<span>Ice</span></a>
+
+    <button class="menu-toggle" aria-label="Buka menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#about">Tentang</a>
+      <a href="#contact">Kontak</a>
+      <button class="admin-nav-btn" id="openAdminLogin">Admin</button>
+    </nav>
+
+    <a href="#menu" class="nav-cta">Pesan Sekarang <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span>✦</span> Freshly made, happily served</div>
+        <h1>Sweet moments<br><em>start here.</em></h1>
+        <p class="hero-text">
+          Es krim lembut dengan rasa yang bikin hari terasa lebih ringan.
+          Temukan scoop favoritmu dan nikmati momen manis bersama MeloIce.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#menu" class="btn btn-primary">Lihat Menu <span>→</span></a>
+          <a href="#about" class="btn btn-ghost">Kenapa MeloIce?</a>
+        </div>
+
+        <div class="hero-note">
+          <div class="mini-avatars">
+            <span>🍦</span><span>💙</span><span>✨</span>
+          </div>
+          <div><strong>Made with love</strong><small>Untuk setiap momen kecilmu.</small></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="blob"></div>
+        <div class="spark spark-1">✦</div>
+        <div class="spark spark-2">✦</div>
+        <div class="icecream-card">
+          <div class="icecream-art">
+            <div class="scoop scoop-blue"></div>
+            <div class="scoop scoop-cream"></div>
+            <div class="scoop scoop-gray"></div>
+            <div class="cone"></div>
+          </div>
+        </div>
+        <div class="floating-card floating-card-top">
+          <span class="rating">★</span>
+          <div><strong>4.9/5</strong><small>Happy customers</small></div>
+        </div>
+        <div class="floating-card floating-card-bottom">
+          <span class="tiny-icon">❄</span>
+          <div><strong>100% Fresh</strong><small>Every single day</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="marquee">
+      <div>CREAMY <span>✦</span> FRESH <span>✦</span> HAPPY <span>✦</span> DELICIOUS <span>✦</span> CREAMY <span>✦</span> FRESH <span>✦</span> HAPPY</div>
+    </section>
+
+    <section class="section menu-section" id="menu">
+      <div class="section-heading">
+        <div>
+          <span class="section-label">OUR FAVORITES</span>
+          <h2>Pick your <em>happy.</em></h2>
+        </div>
+        <p>Favorit pelanggan MeloIce yang siap menemani hari kamu.</p>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card">
+          <div class="product-image vanilla">
+            <span class="badge">BEST SELLER</span>
+            <div class="cup-art"><i></i><i></i><i></i></div>
+          </div>
+          <div class="product-info">
+            <div><h3>Vanilla Cloud</h3><span class="price">Rp18K</span></div>
+            <p>Vanilla creamy dengan aroma lembut.</p>
+            <button class="order-btn" data-product="Vanilla Cloud">Tambah +</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image blueberry">
+            <span class="badge">NEW</span>
+            <div class="cup-art"><i></i><i></i><i></i></div>
+          </div>
+          <div class="product-info">
+            <div><h3>Blueberry Bliss</h3><span class="price">Rp20K</span></div>
+            <p>Manis, fruity, dan super refreshing.</p>
+            <button class="order-btn" data-product="Blueberry Bliss">Tambah +</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image cookies">
+            <div class="cup-art"><i></i><i></i><i></i></div>
+          </div>
+          <div class="product-info">
+            <div><h3>Cookies & Cream</h3><span class="price">Rp22K</span></div>
+            <p>Crunchy cookies dalam es krim creamy.</p>
+            <button class="order-btn" data-product="Cookies & Cream">Tambah +</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="about-image">
+        <div class="about-circle"></div>
+        <div class="about-scoop">
+          <div class="scoop scoop-blue"></div>
+          <div class="scoop scoop-cream"></div>
+          <div class="cone small-cone"></div>
+        </div>
+      </div>
+      <div class="about-copy">
+        <span class="section-label">WHY MELOICE?</span>
+        <h2>Simple ingredients.<br><em>Big happiness.</em></h2>
+        <p>
+          MeloIce hadir untuk membuat es krim yang sederhana terasa spesial.
+          Kami memilih bahan berkualitas dan menyajikannya dengan rasa yang
+          familiar, fresh, dan cocok dinikmati kapan saja.
+        </p>
+        <div class="features">
+          <div><span>01</span><strong>Fresh Daily</strong><small>Dibuat fresh setiap hari.</small></div>
+          <div><span>02</span><strong>Quality First</strong><small>Bahan pilihan berkualitas.</small></div>
+          <div><span>03</span><strong>Made Happy</strong><small>Rasa untuk mood yang lebih baik.</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+      <div>
+        <span class="section-label">READY FOR A SCOOP?</span>
+        <h2>Make today a little<br><em>sweeter.</em></h2>
+      </div>
+      <div class="cta-right">
+        <p>Yuk, pilih rasa favoritmu dan rasakan manisnya MeloIce.</p>
+        <a href="#menu" class="btn btn-light">Order Your Ice Cream <span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="logo">Melo<span>Ice</span></div>
+    <p>© 2026 MeloIce. Scoop happiness every day.</p>
+    <div class="socials"><a href="#">IG</a><a href="#">TT</a><a href="#">WA</a></div>
+  </footer>
+
+  <div class="toast" role="status"></div>
+
+  <!-- Checkout modal -->
+  <div class="modal-backdrop" id="checkoutModal" aria-hidden="true">
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+      <button class="modal-close" data-close="checkoutModal" aria-label="Tutup">×</button>
+      <span class="section-label">ORDER YOUR SCOOP</span>
+      <h2 id="checkoutTitle">Checkout <em>pesanan.</em></h2>
+      <div id="checkoutSummary" class="checkout-summary"></div>
+      <form id="checkoutForm" class="stack-form">
+        <label>Nama lengkap<input name="customerName" autocomplete="name" required maxlength="80" placeholder="Nama kamu"></label>
+        <label>Nomor WhatsApp<input name="customerWhatsApp" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="Contoh: 081234567890"></label>
+        <label>Catatan pesanan (opsional)<textarea name="notes" rows="2" maxlength="300" placeholder="Contoh: tanpa topping"></textarea></label>
+        <p class="form-hint">Nama dan nomor WhatsApp digunakan untuk menindaklanjuti pesananmu.</p>
+        <button class="btn btn-primary" type="submit">Kirim Pesanan <span>→</span></button>
+      </form>
+    </section>
+  </div>
+
+  <!-- Admin login -->
+  <div class="modal-backdrop" id="adminLoginModal" aria-hidden="true">
+    <section class="modal-card modal-narrow" role="dialog" aria-modal="true" aria-labelledby="adminLoginTitle">
+      <button class="modal-close" data-close="adminLoginModal" aria-label="Tutup">×</button>
+      <span class="section-label">PRIVATE AREA</span><h2 id="adminLoginTitle">Admin <em>login.</em></h2>
+      <form id="adminLoginForm" class="stack-form">
+        <label>Password admin<input name="password" type="password" required autocomplete="current-password" placeholder="Masukkan password"></label>
+        <p class="form-hint">Password diverifikasi oleh Google Apps Script.</p>
+        <button class="btn btn-primary" type="submit">Masuk Panel Admin →</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- Admin dashboard -->
+  <div class="modal-backdrop admin-backdrop" id="adminPanelModal" aria-hidden="true">
+    <section class="admin-panel" role="dialog" aria-modal="true" aria-labelledby="adminPanelTitle">
+      <header class="admin-panel-head"><div><span class="section-label">NUVEICECREAM CONTROL CENTER</span><h2 id="adminPanelTitle">Panel <em>Admin.</em></h2></div><div class="admin-head-actions"><button class="btn btn-ghost" id="refreshAdmin">↻ Refresh</button><button class="btn btn-ghost" id="adminLogout">Keluar</button><button class="modal-close inline-close" data-close="adminPanelModal" aria-label="Tutup">×</button></div></header>
+      <div class="admin-stats" id="adminStats"><div><small>Total pesanan</small><strong>—</strong></div><div><small>Menunggu</small><strong>—</strong></div><div><small>Diproses</small><strong>—</strong></div><div><small>Selesai</small><strong>—</strong></div></div>
+      <div class="admin-toolbar"><div><h3>Pesanan masuk</h3><p>Kelola status, data pesanan, dan tindak lanjut pelanggan.</p></div><div class="admin-filters"><input id="orderSearch" type="search" placeholder="Cari nama / nomor / ID"><select id="orderStatusFilter"><option value="">Semua status</option><option>Menunggu</option><option>Dihubungi</option><option>Diproses</option><option>Selesai</option><option>Dibatalkan</option></select></div></div>
+      <div class="table-wrap"><table class="orders-table"><thead><tr><th>Pesanan</th><th>Pelanggan</th><th>Detail</th><th>Total</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="ordersTableBody"><tr><td colspan="6">Login dan refresh untuk memuat pesanan.</td></tr></tbody></table></div>
+      <section class="admin-crud"><div><h3>Kelola produk (CRUD)</h3><p>Tambah, edit, atau hapus produk di sheet Products.</p></div><form id="productForm" class="product-crud-form"><input name="id" type="hidden"><input name="name" required placeholder="Nama produk"><input name="price" type="number" min="0" required placeholder="Harga (angka)"><input name="category" placeholder="Kategori"><input name="description" placeholder="Deskripsi"><input name="image" placeholder="URL gambar"><label class="check-label"><input name="active" type="checkbox" checked> Aktif</label><button class="btn btn-primary" type="submit">Simpan produk</button><button class="btn btn-ghost" type="button" id="resetProductForm">Bersihkan</button></form><div id="productsAdminList" class="products-admin-list"></div></section>
+    </section>
+  </div>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
