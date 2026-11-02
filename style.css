@@ -38,3 +38,18 @@ footer{padding:28px 8vw;border-top:1px solid var(--line);display:flex;justify-co
 .order-message.error{color:#c0392b}
 .cart-bottom #checkout{cursor:pointer}
 .cart-bottom #checkout:disabled{opacity:.55;cursor:not-allowed}
+
+
+/* Form checkout database, mengikuti tema Nuvé */
+.drawer-order-form{border-top:1px solid var(--line);padding:16px 0;display:flex;flex-direction:column;gap:8px;max-height:42vh;overflow:auto}
+.drawer-order-form[hidden]{display:none}
+.drawer-order-form label{font-size:.75rem;font-weight:700;color:var(--ink);margin-top:4px}
+.drawer-order-form input,.drawer-order-form textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 12px;font:inherit;font-size:.82rem;color:var(--ink);background:#fff;outline:none}
+.drawer-order-form input:focus,.drawer-order-form textarea:focus{border-color:var(--blue)}
+.drawer-order-form .primary-btn{width:100%;justify-content:center;cursor:pointer}
+.drawer-order-form button:disabled{opacity:.6;cursor:wait}
+.order-message{font-size:.75rem;line-height:1.5;margin:4px 0}
+.order-message.success{color:#16834a}
+.order-message.error{color:#c0392b}
+.cart-bottom #checkout{cursor:pointer}
+.cart-bottom #checkout:disabled{opacity:.55;cursor:not-allowed}
