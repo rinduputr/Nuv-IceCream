@@ -18,9 +18,7 @@ function closeCart(){drawer.classList.remove("open");backdrop.classList.remove("
 cartBtn.addEventListener("click",openCart); backdrop.addEventListener("click",closeCart); document.getElementById("closeCart").addEventListener("click",closeCart);
 
 document.querySelectorAll(".quick-add").forEach(btn=>btn.addEventListener("click",()=>{
-  const name=btn.dataset.name; cart.push(name); renderCart();
-
- openCart();
+  const name=btn.dataset.name; cart.push(name); renderCart(); openCart();
 }));
 function renderCart(){
   cartCount.textContent=cart.length;
@@ -31,82 +29,10 @@ function renderCart(){
     cartItems.innerHTML=Object.entries(counts).map(([name,count])=>`<div class="cart-item"><span>${name} × ${count}</span><b>Rp ${count*20}K</b></div>`).join("");
   }
   cartTotal.textContent=`Rp ${cart.length*20}K`;
-  checkout.disabled = cart.length === 0;
-  checkout.textContent = cart.length ? "Lanjut checkout →" : "Keranjang kosong";
+  const detail=cart.length?cart.join(", "):"menu favorit";
+  checkout.href=`https://wa.me/6281210719902?text=${encodeURIComponent("Halo kak rindu aku cek di website kamu keren, mau dong pesan menu "+detail)}`;
 }
 renderCart();
-
-/* Checkout database Google Sheets */
-(() => {
-  const form = document.getElementById("orderForm");
-  const message = document.getElementById("orderMessage");
-  const submit = document.getElementById("submitOrder");
-  const apiUrl = window.NUVE_CONFIG?.API_URL;
-  const prices = {
-    "Vanilla Cloud": 18000,
-    "Berry Bliss": 20000,
-    "Matcha Mist": 20000,
-    "Strawberry Dream": 20000,
-    "Chocolate Noir": 19000,
-    "Minty Blue": 21000
-  };
-
-  checkout.addEventListener("click", () => {
-    if (!cart.length) return;
-    form.hidden = !form.hidden;
-    if (!form.hidden) {
-      form.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      form.elements.customerName.focus();
-    }
-  });
-
-  form.addEventListener("submit", async event => {
-    event.preventDefault();
-    if (!cart.length) return;
-    if (!apiUrl || apiUrl.includes("PASTE_APPS_SCRIPT")) {
-      message.textContent = "URL database belum diatur di config.js.";
-      message.className = "order-message error";
-      return;
-    }
-    const counts = {};
-    cart.forEach(name => counts[name] = (counts[name] || 0) + 1);
-    const items = Object.entries(counts).map(([name, qty]) => ({
-      name, qty, price: prices[name] || 20000
-    }));
-    const order = {
-      customerName: form.elements.customerName.value.trim(),
-      customerWhatsApp: form.elements.customerWhatsApp.value.trim(),
-      notes: form.elements.notes.value.trim(),
-      items
-    };
-    submit.disabled = true;
-    submit.textContent = "Mengirim...";
-    message.textContent = "Mengirim pesanan ke database...";
-    message.className = "order-message";
-    try {
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ action: "createOrder", order })
-      });
-      const result = await response.json();
-      if (!response.ok || !result.ok) throw new Error(result.error || "Pesanan gagal disimpan.");
-      message.textContent = "Pesanan berhasil disimpan. Nomor: " + result.data.orderId;
-      message.className = "order-message success";
-      cart.length = 0;
-      renderCart();
-      form.reset();
-    } catch (error) {
-      console.error("Checkout:", error);
-      message.textContent = "Pesanan belum terkirim. Periksa izin Web App Apps Script atau koneksi internet.";
-      message.className = "order-message error";
-    } finally {
-      submit.disabled = false;
-      submit.textContent = "Kirim pesanan →";
-    }
-  });
-})();
-
 
 /* ================================
    AUTO SCROLL — Nuvé Ice Cream
